@@ -53,9 +53,9 @@ void display(Screen *scr);
 void clear(Screen *scr);
 
 Pixel* getpixel(Screen *scr, int x, int y);
-void putpixel(Screen *scr, Pixel pix, int x, int y);
+void putpixel(Screen *scr, Pixel pix, int x, int y); // sets pixel in matrix and draws it on a screen
 void clearpixel(Screen *scr, int x, int y);
-void setpixel(Screen *scr, Pixel pix, int x, int y);
+void setpixel(Screen *scr, Pixel pix, int x, int y); // only sets pixel in matrix
 
 void _goto(int x, int y); // moves console cursor
 
