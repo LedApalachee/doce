@@ -3,12 +3,6 @@
 
 /*			Led's Console Graphics Library  		*/
 
-typedef enum
-{
-	false,
-	true
-} bool;
-
 
 typedef enum
 {
