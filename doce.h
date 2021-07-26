@@ -43,13 +43,14 @@ typedef struct
 void init_screen(Screen *scr, int sx, int sy);
 void free_screen(Screen *scr);
 
-void display(Screen *scr);
-void clear(Screen *scr);
+void draw_screen(Screen *scr);
+void clear_screen(Screen *scr);
 
 Pixel* getpixel(Screen *scr, int x, int y);
 void putpixel(Screen *scr, Pixel pix, int x, int y); // sets pixel in matrix and draws it on a screen
 void clearpixel(Screen *scr, int x, int y);
 void setpixel(Screen *scr, Pixel pix, int x, int y); // only sets pixel in matrix
+void drawpixel(Screen *scr, int x, int y);
 
 void _goto(int x, int y); // moves console cursor
 

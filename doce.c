@@ -34,7 +34,7 @@ inline void _goto(int x, int y)
 }
 
 
-void display(Screen *scr)
+void draw_screen(Screen *scr)
 {
 	CONSOLE_SCREEN_BUFFER_INFO origin;
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -51,7 +51,7 @@ void display(Screen *scr)
 }
 
 
-void clear(Screen *scr)
+void clear_screen(Screen *scr)
 {
 	CONSOLE_SCREEN_BUFFER_INFO origin;
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -110,4 +110,19 @@ void clearpixel(Screen *scr, int x, int y)
 void setpixel(Screen *scr, Pixel pix, int x, int y)
 {
 	if (getpixel(scr, x,y)) *getpixel(scr, x,y) = pix;
+}
+
+
+void drawpixel(Screen *scr, int x, int y)
+{
+	CONSOLE_SCREEN_BUFFER_INFO origin;
+	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+	GetConsoleScreenBufferInfo(console, &origin);
+
+	_goto(x,y);
+	SetConsoleTextAttribute(console, (getpixel(scr, x,y)->bg_color * 16 + getpixel(scr, x,y)->fg_color));
+	putchar(getpixel(scr, x,y)->ch);
+
+	SetConsoleCursorPosition(console, origin.dwCursorPosition);
+	SetConsoleTextAttribute(console, origin.wAttributes);
 }
